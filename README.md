@@ -2,6 +2,9 @@
 
 This project was made as a part of React course from Scrimba with my additional features
 
+## Screenshots
+![Example screenshot](./img/Screenshot.png)
+
 ## Done with course
 - rolling new dice
 - check if player won
