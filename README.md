@@ -8,7 +8,7 @@ This project was made as a part of React course from Scrimba with my additional 
 - confetti effect
 
 ## To-do
-- real dots on the dice
+- --real dots on the dice--
 - tracking number of rolls
 - tracking time it took to win
 - saving best time to localStorage
