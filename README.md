@@ -3,8 +3,9 @@
 This project was made as a part of React course from Scrimba with my additional features
 
 ## Done
-- useState for storing dice variable
-- useEffect to check if player won
+- rolling new dice
+- check if player won
+- confetii effect
 
 ## To-do
 - real dots on the dice
