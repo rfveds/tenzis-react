@@ -10,6 +10,7 @@ function App() {
   const [dice, setDice] = React.useState(allNewDice)
   const [tenzies, setTenzies] = React.useState(false)
   const [seconds, setSeconds] = React.useState(0)
+  const [bestTime, setBestTime] = React.useState(() => JSON.parse(localStorage.getItem('bestTime')) || '')
 
   React.useEffect(() => {
     let intervalId
@@ -29,9 +30,14 @@ function App() {
 
     if (allHeld && allSameValue) {
       setTenzies(true)
+      setBestTime(seconds)
     }
   }
     , [dice])
+
+  React.useEffect(() => {
+    localStorage.setItem("bestTime", JSON.stringify(bestTime))
+  }, [bestTime])
 
 
   function allNewDice() {
@@ -93,7 +99,8 @@ function App() {
       </button>
       <div className='info'>
         <p>Rolls: {rolls}</p>
-        <p>Seconds: {seconds}</p>
+        <p>Seconds: {seconds}s</p>
+        <p>Best Time: {bestTime}s</p>
       </div>
     </main>
   );
