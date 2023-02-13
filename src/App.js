@@ -9,6 +9,19 @@ function App() {
   const [rolls, setRolls] = React.useState(0)
   const [dice, setDice] = React.useState(allNewDice)
   const [tenzies, setTenzies] = React.useState(false)
+  const [seconds, setSeconds] = React.useState(0)
+
+  React.useEffect(() => {
+    let intervalId
+    if (!tenzies) {
+      intervalId = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+      }, 1000);
+    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [!tenzies]);
 
   React.useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
@@ -37,11 +50,12 @@ function App() {
     }
   }
   function rollDice() {
-    if(tenzies){
+    if (tenzies) {
       setDice(allNewDice)
       setTenzies(false)
       setRolls(0)
-    } 
+      setSeconds(0)
+    }
     setRolls(i => i + 1)
     setDice(oldDice => oldDice.map((die) => {
       return die.isHeld ?
@@ -59,16 +73,16 @@ function App() {
   }
 
   const diceElements = dice.map(die =>
-    <Die 
-      key={die.id} 
-      number={die.value} 
-      isHeld={die.isHeld} 
-      holdDice={() => holdDice(die.id)} 
+    <Die
+      key={die.id}
+      number={die.value}
+      isHeld={die.isHeld}
+      holdDice={() => holdDice(die.id)}
     />)
 
   return (
     <main>
-      { tenzies && (<Confetti />)}
+      {tenzies && (<Confetti />)}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="dice-container">
@@ -77,7 +91,10 @@ function App() {
       <button className="roll-dice" onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      <p>Rolls: {rolls}</p>
+      <div className='info'>
+        <p>Rolls: {rolls}</p>
+        <p>Seconds: {seconds}</p>
+      </div>
     </main>
   );
 }

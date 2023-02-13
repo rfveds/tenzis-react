@@ -7,17 +7,17 @@ function Die(props) {
     backgroundColor: props.isHeld ? "#59E391" : "white"
   }
 
-  const a = []
+  const cube = []
 
-  for(let i = 1; i <= props.number; i++){
-    a.push(
-      <div class={`dot die${props.number}--${i}`}></div>
+  for (let i = 1; i <= props.number; i++) {
+    cube.push(
+      <div key={i} className={`dot die${props.number}--${i}`}></div>
     )
   }
 
   return (
     <div className="die" style={styles} onClick={props.holdDice}>
-      {a}
+      {cube}
     </div >
   );
 }

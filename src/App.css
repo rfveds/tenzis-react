@@ -67,3 +67,10 @@ main {
   text-align: center;
   max-width: 50ch;
 }
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 40px;
+}
