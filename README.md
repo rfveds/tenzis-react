@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Tenzies Game in React
+
+This project was made as a part of React course from Scrimba with my additional features
+
+## Done
+- useState for storing dice varaible
+- useEffect to check if player won
+
+## To-do
+- real dots on the dice
+- tracking number of rolls
+- tracking time it took to win
+- saving best time to localStorage
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
